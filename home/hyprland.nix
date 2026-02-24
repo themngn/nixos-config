@@ -35,6 +35,7 @@ in
       cursor = {
         no_hardware_cursors = true;
         enable_hyprcursor = false;
+        use_cpu_buffer = true;
       };
 
       exec-once = [
@@ -44,6 +45,8 @@ in
         "blueman-applet"
         "nm-applet"
         "hyprctl setcursor Bibata-Modern-Classic 24"
+        "hyprctl keyword cursor:no_hardware_cursors false"
+        "hyprctl keyword cursor:use_cpu_buffer true"
         "workstyle &> /tmp/workstyle.log"
         "swww-daemon"
         "bash -c 'sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)'"
@@ -126,11 +129,11 @@ in
           "$mainMod, down, movefocus, d"
           "$mainMod, F, fullscreen, 0"
           "$mainMod SHIFT, L, exec, scrcpy --render-driver=opengl -m 1080 --video-encoder='c2.android.avc.encoder'"
-          ", PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; hyprshot -m region -o /home/mono/Pictures/Screenshots ; kill $hyprpicker_pid"
-          "$mainMod SHIFT, PRINT, exec, hyprshot -m active -m output -o /home/mono/Pictures/Screenshots"
-          "$mainMod, PRINT, exec, hyprshot -m output -o /home/mono/Pictures/Screenshots"
-          "SHIFT, PRINT, exec, hyprshot -m active -m window -o /home/mono/Pictures/Screenshots"
-          "CTRL, PRINT, exec, hyprshot -m window -o /home/mono/Pictures/Screenshots"
+          ", Print, exec, bash -c 'f=$(hyprshot -zm region -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
+          "$mainMod SHIFT, PRINT, exec, bash -c 'f=$(hyprshot -m active -m output -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
+          "$mainMod, PRINT, exec, bash -c 'f=$(hyprshot -m output -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
+          "SHIFT, PRINT, exec, bash -c 'f=$(hyprshot -m active -m window -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
+          "CTRL, PRINT, exec, bash -c 'f=$(hyprshot -m window -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
           "Control&Shift, PRINT, exec, grim -g \"$(slurp)\" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
         ]
         ++ (builtins.concatLists (

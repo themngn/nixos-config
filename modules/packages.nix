@@ -53,6 +53,8 @@
     satty
     waypaper
     swww
+    swappy
+    grimblast
 
     # Bluetooth
     bluez
