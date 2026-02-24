@@ -18,7 +18,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
-      inputs.plugin_name.packages.${pkgs.system}.default
+      inputs.plugin_name.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
     settings = {
       "$mainMod" = "SUPER";

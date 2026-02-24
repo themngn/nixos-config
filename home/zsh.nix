@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.zsh = {
     enable = true;
@@ -7,11 +7,13 @@
     syntaxHighlighting.enable = true;
 
     # Powerlevel10k instant prompt (must be at the very top of .zshrc)
-    initExtraFirst = ''
+    initContent = lib.mkBefore (''
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
       fi
-    '';
+    '' + ''
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    '');
 
     plugins = [
       {
@@ -20,10 +22,6 @@
         file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
       }
     ];
-
-    initExtra = ''
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-    '';
 
     shellAliases = {
       ll = "ls -l";
