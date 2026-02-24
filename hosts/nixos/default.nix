@@ -8,6 +8,7 @@
     ../../modules/locale.nix
     ../../modules/users.nix
     ../../modules/desktop.nix
+    ../../modules/nix-ld.nix
     ../../modules/packages.nix
     ../../modules/gaming.nix
     ../../modules/virtualisation.nix
