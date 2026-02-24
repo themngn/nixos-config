@@ -45,6 +45,8 @@ in
         "nm-applet"
         "hyprctl setcursor Bibata-Modern-Classic 24"
         "workstyle &> /tmp/workstyle.log"
+        "swww-daemon"
+        "bash -c 'sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)'"
       ];
 
       general = {
