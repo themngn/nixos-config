@@ -2,6 +2,7 @@
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
 
   # AMD GPU early KMS
   boot.initrd.kernelModules = [ "amdgpu" ];
@@ -25,6 +26,12 @@
       "root"
       "mono"
     ];
+  };
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 10d";
   };
 
   nixpkgs.config.allowUnfree = true;
