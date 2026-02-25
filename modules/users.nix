@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   programs.zsh.enable = true;
 
@@ -17,5 +17,6 @@
     ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
+    openssh.authorizedKeys.keyFiles = [ inputs.my-keys ];
   };
 }

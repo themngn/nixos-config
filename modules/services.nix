@@ -25,4 +25,12 @@
   services.asusd.enable = true;
   services.flatpak.enable = true;
   services.upower.enable = true;
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
+  };
 }

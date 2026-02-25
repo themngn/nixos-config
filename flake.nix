@@ -13,6 +13,10 @@
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
     };
+    my-keys = {
+      url = "https://github.com/themngn.keys";
+      flake = false;
+    };
   };
 
   outputs =

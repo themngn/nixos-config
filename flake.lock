@@ -476,6 +476,18 @@
         "type": "github"
       }
     },
+    "my-keys": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-RPv/6bZq+ZaebMtY2qGX1Tll+j5+S+pNRwyy79bqSH4=",
+        "type": "file",
+        "url": "https://github.com/themngn.keys"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/themngn.keys"
+      }
+    },
     "nix-cachyos-kernel": {
       "inputs": {
         "cachyos-kernel": "cachyos-kernel",
@@ -625,6 +637,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "my-keys": "my-keys",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nixpkgs": "nixpkgs_3",
         "plugin_name": "plugin_name"
