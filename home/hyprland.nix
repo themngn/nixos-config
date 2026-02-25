@@ -119,6 +119,7 @@ in
           "$mainMod, W, exec, $menu"
           "$mainMod, B, exec, firefox"
           "$mainMod, P, pseudo,"
+          "$mainMod, L, exec, hyprlock"
           "$mainMod, J, togglesplit"
           "$mainMod SHIFT, P, exec, pkill waybar && waybar & "
           "$mainMod, S, togglespecialworkspace, magic"

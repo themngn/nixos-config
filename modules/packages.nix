@@ -55,6 +55,7 @@
     swww
     swappy
     grimblast
+    hyprlock
 
     # Bluetooth
     bluez

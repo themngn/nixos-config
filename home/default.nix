@@ -5,6 +5,7 @@
     ./zsh.nix
     ./neovim.nix
     ./hyprland.nix
+    ./hyprlock.nix
     ./theme.nix
   ];
 
