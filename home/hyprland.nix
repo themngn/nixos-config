@@ -18,7 +18,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     plugins = [
-      inputs.split-monitor-workspaces.packages.${pkgs.stdenv.hostPlatform.system}.split-monitor-workspaces
+      inputs.plugin_name.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
     settings = {
       "$mainMod" = "SUPER";
@@ -49,8 +49,7 @@ in
         "hyprctl keyword cursor:use_cpu_buffer true"
         "workstyle &> /tmp/workstyle.log"
         "swww-daemon"
-        "bash -c 'sleep 1 && swww img /home/mono/Pictures/Wallpapers/Abstract/wallhaven-ly353y.jpg'"
-        "hyprctl keyword misc:mouse_move_focuses_monitor 0"
+        "bash -c 'sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)'"
       ];
 
       general = {
@@ -107,9 +106,6 @@ in
       env = [
         "XCURSOR_THEME,Bibata-Modern-Classic"
         "XCURSOR_SIZE,24"
-        "WAYLAND_DISPLAY,wayland-0"
-        "XDG_CURRENT_DESKTOP,Hyprland"
-        "XDG_SESSION_TYPE,wayland"
       ];
 
       bind =

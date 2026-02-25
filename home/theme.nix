@@ -10,10 +10,6 @@
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
     };
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
   };
 
   qt = {
@@ -24,7 +20,6 @@
 
   home.sessionVariables = {
     GTK_THEME = "Adwaita-dark";
-    ICON_THEME = "Papirus-Dark";
   };
 
   home.pointerCursor = {

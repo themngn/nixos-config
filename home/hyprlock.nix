@@ -5,7 +5,7 @@
     settings = {
       general = {
         no_fade_in = false;
-        grace = 5;
+        grace = 0;
         disable_loading_bar = false;
       };
 
@@ -33,9 +33,9 @@
         check_color = "rgb(204, 204, 0)";
         fail_color = "rgb(204, 34, 34)";
         fail_transition = 300;
-        capslock_color = "rgb(255, 225, 0)";
-        numlock_color = "rgb(100, 200, 255)";
-        bothlock_color = "rgb(255, 100, 100)";
+        capslock_color = -1;
+        numlock_color = -1;
+        bothlock_color = -1;
         invert_numlock = false;
         swap_font_color = false;
       };
