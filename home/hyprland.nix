@@ -29,7 +29,7 @@ in
       # NOTE: Monitor layout is machine-specific — adjust for your setup
       monitor = [
         "eDP-1, 1920x1200@60, 0x1440, 1"
-        "HDMI-A-1, 2560x1440@144, 0x0, 1"
+        "DP-2, 2560x1440@144, 0x0, 1"
       ];
 
       cursor = {

@@ -72,11 +72,14 @@
     pipx
     devbox
     nix-init
+    gh
 
     # Cloud / Infra
     terraform
     terragrunt
     awscli2
+
+    # K8s
     kompose
     kubectl
     kubernetes
