@@ -32,10 +32,12 @@
     bind
     ffmpeg
     sl
+    bat
 
     # Terminal & Shell
     kitty
     zsh
+    tmux
 
     # Desktop / Wayland
     firefox
@@ -89,6 +91,7 @@
     mpv
     syncplay
     pavucontrol
+    multiviewer-for-f1
 
     # Communication
     telegram-desktop

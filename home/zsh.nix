@@ -13,6 +13,7 @@
       fi
     '' + ''
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      export PATH="$HOME/.npm-global/bin:$PATH"
     '');
 
     plugins = [

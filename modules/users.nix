@@ -19,4 +19,11 @@
     shell = pkgs.zsh;
     openssh.authorizedKeys.keyFiles = [ inputs.my-keys ];
   };
+
+  users.users.greeter = {
+    isSystemUser = true;
+    description = "greetd greeter account";
+    createHome = false;
+    shell = "/bin/false";
+  };
 }
