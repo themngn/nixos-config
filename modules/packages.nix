@@ -92,6 +92,7 @@
     syncplay
     pavucontrol
     multiviewer-for-f1
+    ncspot
 
     # Communication
     telegram-desktop
