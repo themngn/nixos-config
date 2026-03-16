@@ -7,14 +7,17 @@
     syntaxHighlighting.enable = true;
 
     # Powerlevel10k instant prompt (must be at the very top of .zshrc)
-    initContent = lib.mkBefore (''
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '' + ''
-      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      export PATH="$HOME/.npm-global/bin:$PATH"
-    '');
+    initContent = lib.mkBefore (
+      ''
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+      ''
+      + ''
+        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        export PATH="$HOME/.npm-global/bin:$PATH"
+      ''
+    );
 
     plugins = [
       {
