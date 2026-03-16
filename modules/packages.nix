@@ -58,6 +58,8 @@
     swappy
     grimblast
     hyprlock
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
 
     # Bluetooth
     bluez
@@ -110,6 +112,7 @@
 
     # Files & System
     nemo
+    nautilus
     yazi
     gparted
     gnome-software

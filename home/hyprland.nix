@@ -50,6 +50,7 @@ in
         "workstyle &> /tmp/workstyle.log"
         "swww-daemon"
         "sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)"
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       general = {
@@ -106,6 +107,9 @@ in
       env = [
         "XCURSOR_THEME,Bibata-Modern-Classic"
         "XCURSOR_SIZE,24"
+        "XDG_CURRENT_DESKTOP,Hyprland"
+        "XDG_SESSION_TYPE,wayland"
+        "XDG_SESSION_DESKTOP,Hyprland"
       ];
 
       bind = [

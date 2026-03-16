@@ -20,6 +20,14 @@
         default = [ "gtk" ];
         "org.freedesktop.impl.portal.Screencast" = "hyprland";
         "org.freedesktop.impl.portal.Screenshot" = "hyprland";
+        "org.freedesktop.impl.portal.Settings" = "gtk";
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+      };
+      hyprland = {
+        default = [
+          "gtk"
+          "hyprland"
+        ];
       };
     };
   };
