@@ -49,7 +49,7 @@ in
         "hyprctl keyword cursor:use_cpu_buffer true"
         "workstyle &> /tmp/workstyle.log"
         "swww-daemon"
-        "bash -c 'sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)'"
+        "sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)"
       ];
 
       general = {
@@ -134,12 +134,32 @@ in
           "$mainMod, down, movefocus, d"
           "$mainMod, F, fullscreen, 0"
           "$mainMod SHIFT, L, exec, scrcpy --render-driver=opengl -m 1080 --video-encoder='c2.android.avc.encoder'"
-          ", Print, exec, bash -c 'f=$(hyprshot -zm region -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
-          "$mainMod SHIFT, PRINT, exec, bash -c 'f=$(hyprshot -m active -m output -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
-          "$mainMod, PRINT, exec, bash -c 'f=$(hyprshot -m output -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
-          "SHIFT, PRINT, exec, bash -c 'f=$(hyprshot -m active -m window -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
-          "CTRL, PRINT, exec, bash -c 'f=$(hyprshot -m window -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"'"
-          "Control&Shift, PRINT, exec, grim -g \"$(slurp)\" -t ppm - | satty --filename - --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png"
+
+          # Screenshot shortcuts
+          # None = region || Shift = Window || Ctrl - Output
+          # +Alt = satty
+          # +$mainMod = active (not for region)
+          # Print: Region screenshot
+          ", PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m region -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Alt + Print: Region screenshot with satty
+          "ALT, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m region -o /home/mono/Pictures/Screenshots); satty --filename \"$f\" --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png; wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Shift + Print: Window screenshot
+          "SHIFT, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m window -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Shift + Alt + Print: Window screenshot with satty
+          "SHIFT ALT, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m window -o /home/mono/Pictures/Screenshots); satty --filename \"$f\" --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png; wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Super + Shift + Print: Active window screenshot
+          "SUPER SHIFT, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m active -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Super + Shift + Alt + Print: Active window screenshot with satty
+          "SUPER SHIFT ALT, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m active -o /home/mono/Pictures/Screenshots); satty --filename \"$f\" --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png; wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Ctrl + Print: Output screenshot
+          "CTRL, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m output -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Ctrl + Alt + Print: Output screenshot with satty
+          "CTRL ALT, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m output -o /home/mono/Pictures/Screenshots); satty --filename \"$f\" --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png; wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Super + Ctrl + Print: Active output screenshot
+          "SUPER CTRL, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m active -o /home/mono/Pictures/Screenshots); wl-copy < \"$f\"; kill $hyprpicker_pid"
+          # Super + Ctrl + Alt + Print: Active output screenshot with satty
+          "SUPER CTRL ALT, PRINT, exec, hyprpicker -r -z & hyprpicker_pid=$!; sleep 0.1; f=$(hyprshot -m active -o /home/mono/Pictures/Screenshots); satty --filename \"$f\" --fullscreen --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png; wl-copy < \"$f\"; kill $hyprpicker_pid"
+
         ]
         ++ (builtins.concatLists (
           builtins.genList (

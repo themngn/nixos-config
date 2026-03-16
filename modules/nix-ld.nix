@@ -4,6 +4,9 @@
   programs.nix-ld.libraries = with pkgs; [
     # Basic system libs
     stdenv.cc.cc
+    stdenv.cc.cc.lib
+    zlib
+    glib
     zlib
     fuse3
     icu
