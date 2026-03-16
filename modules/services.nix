@@ -25,6 +25,9 @@
   services.asusd.enable = true;
   services.flatpak.enable = true;
   services.upower.enable = true;
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.udisks2.enable = true;
+  services.tumbler.enable = true; # Thumbnail support for images
 
   services.openssh = {
     enable = true;

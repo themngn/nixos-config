@@ -20,6 +20,7 @@ in
     plugins = [
       inputs.plugin_name.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
+
     settings = {
       "$mainMod" = "SUPER";
       "$terminal" = "kitty";
@@ -37,8 +38,10 @@ in
         enable_hyprcursor = false;
         use_cpu_buffer = true;
       };
+      systemd.enable = false;
 
       exec-once = [
+        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "waybar"
         "hyprpm reload -n"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
@@ -50,7 +53,6 @@ in
         "workstyle &> /tmp/workstyle.log"
         "swww-daemon"
         "sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)"
-        "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
       ];
 
       general = {
@@ -110,6 +112,11 @@ in
         "XDG_CURRENT_DESKTOP,Hyprland"
         "XDG_SESSION_TYPE,wayland"
         "XDG_SESSION_DESKTOP,Hyprland"
+        "QT_AUTO_SCREEN_SCALE_FACTOR,1"
+        "QT_QPA_PLATFORM,wayland;xcb"
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+        "MOZ_ENABLE_WAYLAND,1"
+        "GDK_BACKEND,wayland,x11"
       ];
 
       bind = [

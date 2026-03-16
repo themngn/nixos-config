@@ -58,8 +58,20 @@
     swappy
     grimblast
     hyprlock
+    hypridle
+    polkit_gnome
+    nemo-with-extensions
+    nemo-fileroller
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-gtk
+    qt5.qtwayland
+    qt6.qtwayland
+    adwaita-qt
+    adwaita-qt6
+    loupe
+    seahorse
+    evince
+    ffmpegthumbnailer
 
     # Bluetooth
     bluez
