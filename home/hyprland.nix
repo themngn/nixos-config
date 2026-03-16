@@ -20,6 +20,7 @@ in
     plugins = [
       inputs.plugin_name.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
+    systemd.enable = false;
 
     settings = {
       "$mainMod" = "SUPER";
@@ -38,7 +39,6 @@ in
         enable_hyprcursor = false;
         use_cpu_buffer = true;
       };
-      systemd.enable = false;
 
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"

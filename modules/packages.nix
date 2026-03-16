@@ -107,6 +107,7 @@
     pavucontrol
     multiviewer-for-f1
     ncspot
+    eartag
 
     # Communication
     telegram-desktop
