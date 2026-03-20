@@ -7,6 +7,7 @@
     network.listenAddress = "127.0.0.1";
     extraConfig = ''
       auto_update "yes"
+      auto_update_depth "4"
       audio_output {
         type "pipewire"
         name "My PipeWire Output"

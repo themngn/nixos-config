@@ -94,6 +94,7 @@
     terraform
     terragrunt
     awscli2
+    (azure-cli.withExtensions [ azure-cli.extensions.aks-preview ])
 
     # K8s
     kompose
@@ -108,6 +109,7 @@
     multiviewer-for-f1
     ncspot
     eartag
+    picard
 
     # Communication
     telegram-desktop
