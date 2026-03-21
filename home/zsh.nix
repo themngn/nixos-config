@@ -16,6 +16,11 @@
       + ''
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
         export PATH="$HOME/.npm-global/bin:$PATH"
+
+        mk-tf() {
+            mkdir -p "$1" && touch "$1"/{main.tf,variables.tf,outputs.tf}
+            echo "Terraform module '$1' created."
+        }
       ''
     );
 

@@ -7,7 +7,12 @@
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   # AMD P-State driver for better frequency scaling
-  boot.kernelParams = [ "amd_pstate=active" ];
+  boot.kernelParams = [
+    # Fixes NVMe hangs on many AMD laptops
+    "nvme_core.default_ps_max_latency_us=0"
+    # Stabilizes AMD P-State (CPU power)
+    "amd_pstate=active"
+  ];
 
   swapDevices = [
     {
