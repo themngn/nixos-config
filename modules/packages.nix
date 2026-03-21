@@ -47,31 +47,42 @@
     grim
     slurp
     wl-clipboard
-    brightnessctl
-    playerctl
-    networkmanagerapplet
     hyprpicker
     hyprshot
     satty
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-gtk
+
+    # System Control
+    brightnessctl
+    playerctl
+    networkmanagerapplet
+    hyprlock
+    hypridle
+    polkit_gnome
+
+    # Wallpaper & Screenshots
     waypaper
     swww
     swappy
     grimblast
-    hyprlock
-    hypridle
-    polkit_gnome
+
+    # File Manager & Extensions
     nemo-with-extensions
     nemo-fileroller
-    xdg-desktop-portal-hyprland
-    xdg-desktop-portal-gtk
+
+    # Qt & Theme
     qt5.qtwayland
     qt6.qtwayland
     adwaita-qt
     adwaita-qt6
+
+    # Utilities
     loupe
     seahorse
     evince
     ffmpegthumbnailer
+    hyprland-autoname-workspaces
 
     # Bluetooth
     bluez

@@ -32,6 +32,7 @@ in
       monitor = [
         "eDP-1, 1920x1200@60, 0x1440, 1"
         "DP-2, 2560x1440@144, 0x0, 1"
+        "HDMI-A-1, 1920x1080@165, 2560x540, 1"
       ];
 
       cursor = {
@@ -53,6 +54,7 @@ in
         "workstyle &> /tmp/workstyle.log"
         "swww-daemon"
         "sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)"
+        "hyprland-autoname-workspaces"
       ];
 
       general = {
@@ -97,7 +99,7 @@ in
 
       plugin = {
         split-monitor-workspaces = {
-          count = 10;
+          count = 5;
           keep_focused = 0;
           enable_notifications = 1;
           enable_persistent_workspaces = 1;

@@ -37,6 +37,7 @@
       update = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
       v = "nvim";
       goodnight = "echo 'Good night! Sleep tight!' && systemctl poweroff";
+      ssh = "kitty +kitten ssh";
     };
 
     history = {

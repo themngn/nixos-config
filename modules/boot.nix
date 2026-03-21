@@ -12,6 +12,10 @@
     "nvme_core.default_ps_max_latency_us=0"
     # Stabilizes AMD P-State (CPU power)
     "amd_pstate=active"
+    # Disable LTTPR support
+    "amdgpu.dcfeaturemask=0x2"
+    # Disable scatter/gather display (helps with Zen 4 stability)
+    "amdgpu.sg_display=0"
   ];
 
   swapDevices = [
