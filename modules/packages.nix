@@ -41,6 +41,8 @@
 
     # Desktop / Wayland
     firefox
+    google-chrome
+    bitwarden-desktop
     wofi
     waybar
     dunst
