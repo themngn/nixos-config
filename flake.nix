@@ -9,6 +9,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+    };
     plugin_name = {
       url = "github:Duckonaut/split-monitor-workspaces";
       inputs.hyprland.follows = "hyprland";
@@ -19,8 +22,19 @@
     };
   };
 
+  nixConfig = {
+    extra-substituters = [ "https://vicinae.cachix.org" ];
+    extra-trusted-public-keys = [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
+  };
+
   outputs =
-    { self, nixpkgs, home-manager, ... }@inputs:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      vicinae,
+      ...
+    }@inputs:
     {
       nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };

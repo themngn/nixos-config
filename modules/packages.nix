@@ -33,6 +33,7 @@
     ffmpeg
     sl
     bat
+    net-tools
 
     # Terminal & Shell
     kitty
@@ -43,7 +44,6 @@
     firefox
     google-chrome
     bitwarden-desktop
-    wofi
     waybar
     dunst
     grim
@@ -111,6 +111,7 @@
 
     # K8s
     kompose
+    kind
     kubectl
     kubernetes
 

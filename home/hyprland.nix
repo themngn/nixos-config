@@ -20,13 +20,13 @@ in
     plugins = [
       inputs.plugin_name.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
-    systemd.enable = false;
+    systemd.enable = true;
 
     settings = {
       "$mainMod" = "SUPER";
       "$terminal" = "kitty";
       "$fileManager" = "dolphin";
-      "$menu" = "wofi --show drun --allow-images -w 20";
+      "$menu" = "vicinae toggle";
 
       # NOTE: Monitor layout is machine-specific — adjust for your setup
       monitor = [
@@ -44,6 +44,7 @@ in
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "waybar"
+        "vicinae server"
         "hyprpm reload -n"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "blueman-applet"

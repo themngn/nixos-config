@@ -16,23 +16,24 @@
   ];
 
   # ── Kernel ──────────────────────────────────────────────────────────────────
-  # CachyOS zen4 kernel via the pinned overlay (guarantees binary cache hits)
-  nixpkgs.overlays = [
-    inputs.nix-cachyos-kernel.overlays.pinned
-  ];
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-zen4;
+  # # CachyOS zen4 kernel via the pinned overlay (guarantees binary cache hits)
+  # nixpkgs.overlays = [
+  #   inputs.nix-cachyos-kernel.overlays.pinned
+  # ];
+  # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-zen4;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # ── Binary caches ────────────────────────────────────────────────────────────
-  nix.settings = {
-    substituters = [
-      "https://attic.xuyh0120.win/lantian"
-      "https://cache.garnix.io"
-    ];
-    trusted-public-keys = [
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
-      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-    ];
-  };
+  # nix.settings = {
+  #   substituters = [
+  #     "https://attic.xuyh0120.win/lantian"
+  #     "https://cache.garnix.io"
+  #   ];
+  #   trusted-public-keys = [
+  #     "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+  #     "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+  #   ];
+  # };
 
   # ── Host identity ────────────────────────────────────────────────────────────
   networking.hostName = "nixos";

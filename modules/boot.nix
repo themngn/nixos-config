@@ -1,6 +1,7 @@
 { ... }:
 {
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # AMD GPU early KMS
@@ -12,10 +13,16 @@
     "nvme_core.default_ps_max_latency_us=0"
     # Stabilizes AMD P-State (CPU power)
     "amd_pstate=active"
-    # Disable LTTPR support
-    "amdgpu.dcfeaturemask=0x2"
-    # Disable scatter/gather display (helps with Zen 4 stability)
-    "amdgpu.sg_display=0"
+    # --- FIXES FOR THE GPU ERRORS ---
+    # "amdgpu.dc_debug_mask=0x10" # Added underscores
+    # "amdgpu.dcfeaturemask=0x2" # The missing primary fix
+    "amdgpu.sg_display=0" # Critical for Ryzen 8000 stutters
+    "nvme_core.default_ps_limit=0"
+    "amdgpu.dcdebugmask=0x10"
+
+    # --- FIXES FOR THE IDLE HANGS ---
+    "processor.max_cstate=1" # Prevents the deep sleep "weird lag"
+    "idle=nomwait"
   ];
 
   swapDevices = [
