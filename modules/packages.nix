@@ -40,6 +40,7 @@
     kitty
     zsh
     tmux
+    inetutils
 
     # Desktop / Wayland
     firefox
