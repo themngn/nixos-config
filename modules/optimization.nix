@@ -9,7 +9,4 @@
 
   # Automatically optimize Nix store to deduplicate store paths
   nix.optimise.automatic = true;
-
-  # Configure XDG user directories for standardized Downloads, Documents, etc.
-  xdg.userDirs.enable = true;
 }

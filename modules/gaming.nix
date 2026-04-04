@@ -11,6 +11,5 @@
 
   programs.gamescope = {
     enable = true;
-    captureCursor = true;
   };
 }

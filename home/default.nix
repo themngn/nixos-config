@@ -11,6 +11,7 @@
     ./mpd.nix
     ./vicinae.nix
     ./cliphist.nix
+    ./xdg.nix
     inputs.vicinae.homeManagerModules.default
   ];
 

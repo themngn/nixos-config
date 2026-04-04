@@ -7,9 +7,5 @@
 
   services.cliphist = {
     enable = true;
-    systemd = {
-      enable = true;
-      autoStart = true;
-    };
   };
 }

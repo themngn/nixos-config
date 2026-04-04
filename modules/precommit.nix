@@ -1,18 +1,11 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  pre-commit.framework = {
-    enable = true;
-    pkg = inputs.pre-commit-hooks.packages.${pkgs.stdenv.hostPlatform.system}.pre-commit;
-  };
+  # Make nixfmt available system-wide for formatting Nix files
+  environment.systemPackages = with pkgs; [
+    nixfmt
+  ];
 
-  pre-commit.hooks = {
-    nixfmt = {
-      enable = true;
-      entry = "${pkgs.nixfmt}/bin/nixfmt";
-      files = "\\.nix$";
-      language = "system";
-      pass_filenames = true;
-      description = "Format Nix files with nixfmt";
-    };
-  };
+  # Note: To enable git pre-commit hooks, run:
+  # git config core.hooksPath /path/to/hooks
+  # Then create hooks/pre-commit with formatting logic
 }
