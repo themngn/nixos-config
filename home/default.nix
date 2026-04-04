@@ -10,6 +10,7 @@
     ./programs.nix
     ./mpd.nix
     ./vicinae.nix
+    ./cliphist.nix
     inputs.vicinae.homeManagerModules.default
   ];
 

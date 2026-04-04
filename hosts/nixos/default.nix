@@ -13,6 +13,8 @@
     ../../modules/gaming.nix
     ../../modules/virtualisation.nix
     ../../modules/services.nix
+    ../../modules/precommit.nix
+    ../../modules/optimization.nix
   ];
 
   # ── Kernel ──────────────────────────────────────────────────────────────────

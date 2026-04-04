@@ -56,6 +56,7 @@ in
         "swww-daemon"
         "sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)"
         "hyprland-autoname-workspaces"
+        "cliphist wl-paste-listen"
       ];
 
       general = {
@@ -129,6 +130,8 @@ in
         "$mainMod, E, exec, $fileManager" # File manager
         "$mainMod, K, exec, hyprctl reload" # Reload Hyprland config
         "$mainMod, V, togglefloating" # Toggle floating window
+        "$mainMod SHIFT, V, exec, cliphist menu wl-copy" # Cliphist menu
+        "$mainMod CTRL, V, exec, cliphist delete-query" # Cliphist delete
         "$mainMod, W, exec, $menu" # Application menu
         "$mainMod, B, exec, firefox" # Firefox
         "$mainMod, P, pseudo," # Pseudo layout

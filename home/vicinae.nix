@@ -34,6 +34,13 @@
       launcher_window = {
         opacity = 0.98;
       };
+      plugins = {
+        cliphist = {
+          exec = "cliphist list";
+          action = "copy";
+          trigger = "clip";
+        };
+      };
     };
   };
 }
