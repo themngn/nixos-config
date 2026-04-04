@@ -46,7 +46,7 @@
   # Power management
   powerManagement.enable = true;
   services.tumbler.enable = true; # Thumbnail support for images
-  services.envfs.enable = true;
+  #services.envfs.enable = true;
 
   services.openssh = {
     enable = true;

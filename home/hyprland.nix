@@ -25,7 +25,7 @@ in
     settings = {
       "$mainMod" = "SUPER";
       "$terminal" = "kitty";
-      "$fileManager" = "dolphin";
+      "$fileManager" = "nemo";
       "$menu" = "vicinae toggle";
 
       # NOTE: Monitor layout is machine-specific — adjust for your setup
@@ -123,30 +123,30 @@ in
       ];
 
       bind = [
-        "$mainMod, Q, exec, $terminal"
-        "$mainMod, C, killactive"
-        "$mainMod SHIFT, M, exit"
-        "$mainMod, E, exec, $fileManager"
-        "$mainMod, K, exec, hyprctl reload"
-        "$mainMod, V, togglefloating"
-        "$mainMod, W, exec, $menu"
-        "$mainMod, B, exec, firefox"
-        "$mainMod, P, pseudo,"
-        "$mainMod, L, exec, hyprlock"
-        "$mainMod, J, togglesplit"
-        "$mainMod SHIFT, P, exec, pkill waybar && waybar & "
-        "$mainMod, A, togglespecialworkspace, M1"
-        "$mainMod, S, togglespecialworkspace, M2"
-        "$mainMod, D, togglespecialworkspace, M3"
-        "$mainMod SHIFT, A, movetoworkspace, special:M1"
-        "$mainMod SHIFT, S, movetoworkspace, special:M2"
-        "$mainMod SHIFT, D, movetoworkspace, special:M3"
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
-        "$mainMod, F, fullscreen, 0"
-        "$mainMod SHIFT, L, exec, scrcpy --render-driver=opengl -m 1080 --video-encoder='c2.android.avc.encoder'"
+        "$mainMod, Q, exec, $terminal" # Terminal
+        "$mainMod, C, killactive" # Kill active window
+        "$mainMod SHIFT, M, exit" # Exit Hyprland
+        "$mainMod, E, exec, $fileManager" # File manager
+        "$mainMod, K, exec, hyprctl reload" # Reload Hyprland config
+        "$mainMod, V, togglefloating" # Toggle floating window
+        "$mainMod, W, exec, $menu" # Application menu
+        "$mainMod, B, exec, firefox" # Firefox
+        "$mainMod, P, pseudo," # Pseudo layout
+        "$mainMod, L, exec, hyprlock" # Lock screen
+        "$mainMod, J, togglesplit" # Toggle split layout
+        "$mainMod SHIFT, P, exec, pkill waybar && waybar & " # Restart waybar
+        "$mainMod, A, togglespecialworkspace, M1" # Toggle special workspace M1
+        "$mainMod, S, togglespecialworkspace, M2" # Toggle special workspace M2
+        "$mainMod, D, togglespecialworkspace, M3" # Toggle special workspace M3
+        "$mainMod SHIFT, A, movetoworkspace, special:M1" # Move window to M1
+        "$mainMod SHIFT, S, movetoworkspace, special:M2" # Move window to M2
+        "$mainMod SHIFT, D, movetoworkspace, special:M3" # Move window to M3
+        "$mainMod, left, movefocus, l" # Focus left window
+        "$mainMod, right, movefocus, r" # Focus right window
+        "$mainMod, up, movefocus, u" # Focus up window
+        "$mainMod, down, movefocus, d" # Focus down window
+        "$mainMod, F, fullscreen, 0" # Fullscreen
+        "$mainMod SHIFT, L, exec, scrcpy --render-driver=opengl -m 1080 --video-encoder='c2.android.avc.encoder'" # Mirror Android device
 
         # Screenshot shortcuts
         # None = region || Shift = Window || Ctrl - Output

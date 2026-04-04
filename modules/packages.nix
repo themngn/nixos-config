@@ -34,6 +34,7 @@
     sl
     bat
     net-tools
+    file
 
     # Terminal & Shell
     kitty
@@ -44,6 +45,7 @@
     firefox
     google-chrome
     bitwarden-desktop
+    bitwarden-cli
     waybar
     dunst
     grim
@@ -145,12 +147,15 @@
     yazi
     gparted
     gnome-software
+    dconf
+    glib
 
     # Gaming
     gamescope
     mangohud
     protonup-qt
     bottles
+    protontricks
 
     # Android / Misc
     scrcpy

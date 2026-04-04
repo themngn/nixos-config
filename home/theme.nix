@@ -33,6 +33,10 @@
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      gtk-application-prefer-dark-theme = true;
+    };
+    "org/gnome/nautilus/preferences" = {
+      default-folder-viewer = "icon-view";
     };
   };
 }
