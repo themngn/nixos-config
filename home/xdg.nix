@@ -3,6 +3,7 @@
   # Configure XDG user directories for standardized Downloads, Documents, etc.
   xdg.userDirs = {
     enable = true;
+    setSessionVariables = true;
     desktop = "$HOME/Desktop";
     documents = "$HOME/Documents";
     download = "$HOME/Downloads";

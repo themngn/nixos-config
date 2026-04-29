@@ -2,8 +2,12 @@
   description = "My Hyprland System Flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,8 +16,8 @@
     vicinae = {
       url = "github:vicinaehq/vicinae";
     };
-    plugin_name = {
-      url = "github:Duckonaut/split-monitor-workspaces";
+    hyprsplit = {
+      url = "github:shezdy/hyprsplit";
       inputs.hyprland.follows = "hyprland";
     };
     my-keys = {
@@ -40,6 +44,15 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./hosts/nixos
+          {
+            nixpkgs.overlays = [
+              (final: prev: {
+                openldap = prev.openldap.overrideAttrs (oldAttrs: {
+                  doCheck = false;
+                });
+              })
+            ];
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

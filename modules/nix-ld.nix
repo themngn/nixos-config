@@ -33,14 +33,14 @@
     libgbm
 
     # X11 libs
-    xorg.libX11
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXext
-    xorg.libXfixes
-    xorg.libXrandr
-    xorg.libXrender
-    xorg.libXtst
+    libx11
+    libxcomposite
+    libxdamage
+    libxext
+    libxfixes
+    libxrandr
+    libxrender
+    libxtst
 
     cups.lib
     libxcb

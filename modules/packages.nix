@@ -35,6 +35,7 @@
     bat
     net-tools
     file
+    texlive.combined.scheme-full
 
     # Terminal & Shell
     kitty
@@ -112,31 +113,23 @@
     awscli2
     (azure-cli.withExtensions [ azure-cli.extensions.aks-preview ])
 
-    # K8s
-    kompose
-    kind
-    kubectl
-    kubernetes
-
     # Media
     vlc
     mpv
     syncplay
     pavucontrol
-    multiviewer-for-f1
-    ncspot
     eartag
     picard
 
     # Communication
     telegram-desktop
-    (discord.override { withVencord = true; })
-    signal-desktop
+    #(discord.override { withVencord = true; })
+
     thunderbird
     element-desktop
 
     # Productivity
-    libreoffice-qt
+    # libreoffice-qt
     hunspell
     hunspellDicts.uk_UA
     appflowy
@@ -157,6 +150,7 @@
     protonup-qt
     bottles
     protontricks
+    ckan
 
     # Android / Misc
     scrcpy
@@ -164,7 +158,7 @@
     swayest-workstyle
     asusctl
     gnome-network-displays
-    miraclecast
+
     glib
   ];
 }

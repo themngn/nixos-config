@@ -35,13 +35,9 @@
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.udisks2.enable = true;
 
-  # Sleep on lid close
-  services.logind = {
-    lidSwitch = "suspend";
-    lidSwitchExternalPower = "suspend";
-    # handleLidSwitch = "suspend";
-    # handleLidSwitchExternalPower = "suspend";
-  };
+  # # Sleep on lid close
+  # services.logind.lidSwitchAction = "suspend";
+  # services.logind.lidSwitchExternalPowerAction = "suspend";
 
   # Power management
   powerManagement.enable = true;

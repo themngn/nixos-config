@@ -13,12 +13,18 @@ let
     "KP_Prior"
     "KP_Insert"
   ];
+
+  hyprland-pkg = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+
+  # Use hyprsplit package from its flake
+  hyprsplit = inputs.hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit;
 in
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = hyprland-pkg;
     plugins = [
-      inputs.plugin_name.packages.${pkgs.stdenv.hostPlatform.system}.default
+      hyprsplit
     ];
     systemd.enable = true;
 
@@ -30,9 +36,9 @@ in
 
       # NOTE: Monitor layout is machine-specific — adjust for your setup
       monitor = [
-        "eDP-1, 1920x1200@60, 0x1440, 1"
-        "DP-2, 2560x1440@144, 0x0, 1"
-        "HDMI-A-1, 1920x1080@165, 2560x540, 1"
+        "eDP-1, 1920x1200@60, 640x1440, 1"
+        "DP-1, 2560x1440@120, 2560x0, 1"
+        "DP-2, 2560x1440@60, 0x0, 1"
       ];
 
       cursor = {
@@ -44,8 +50,8 @@ in
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
         "waybar"
+        "awww-daemon"
         "vicinae server"
-        "hyprpm reload -n"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         "blueman-applet"
         "nm-applet"
@@ -53,15 +59,14 @@ in
         "hyprctl keyword cursor:no_hardware_cursors false"
         "hyprctl keyword cursor:use_cpu_buffer true"
         "workstyle &> /tmp/workstyle.log"
-        "swww-daemon"
         "sleep 1 && swww img $(find /home/mono/Pictures/Wallpapers -type f | shuf -n1)"
         "hyprland-autoname-workspaces"
         "cliphist wl-paste-listen"
       ];
 
       general = {
-        gaps_in = 0;
-        gaps_out = 0;
+        gaps_in = 1;
+        gaps_out = 1;
         border_size = 1;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
@@ -100,11 +105,9 @@ in
       };
 
       plugin = {
-        split-monitor-workspaces = {
-          count = 5;
-          keep_focused = 0;
-          enable_notifications = 1;
-          enable_persistent_workspaces = 1;
+        hyprsplit = {
+          num_workspaces = 5;
+          persistent_workspaces = true;
         };
       };
 
@@ -136,7 +139,7 @@ in
         "$mainMod, B, exec, firefox" # Firefox
         "$mainMod, P, pseudo," # Pseudo layout
         "$mainMod, L, exec, hyprlock" # Lock screen
-        "$mainMod, J, togglesplit" # Toggle split layout
+        # "$mainMod, J, togglesplit" # Toggle split layout
         "$mainMod SHIFT, P, exec, pkill waybar && waybar & " # Restart waybar
         "$mainMod, A, togglespecialworkspace, M1" # Toggle special workspace M1
         "$mainMod, S, togglespecialworkspace, M2" # Toggle special workspace M2
@@ -186,10 +189,10 @@ in
             kpKey = builtins.elemAt kpKeys i;
           in
           [
-            "$mainMod, ${key}, split-workspace, ${toString ws}"
-            "$mainMod SHIFT, ${key}, split-movetoworkspacesilent, ${toString ws}"
-            "$mainMod, ${kpKey}, split-workspace, ${toString ws}"
-            "$mainMod SHIFT, ${kpKey}, split-movetoworkspacesilent, ${toString ws}"
+            "$mainMod, ${key}, split:workspace, ${toString ws}"
+            "$mainMod SHIFT, ${key}, split:movetoworkspacesilent, ${toString ws}"
+            "$mainMod, ${kpKey}, split:workspace, ${toString ws}"
+            "$mainMod SHIFT, ${kpKey}, split:movetoworkspacesilent, ${toString ws}"
           ]
         ) 10
       ));
@@ -214,6 +217,8 @@ in
         "match:title ^(Picture-in-Picture)$, pin on"
         "match:title ^(Picture-in-Picture)$, size 600 340"
         "match:title ^(Picture-in-Picture)$, move 1320 25"
+
+        "match:class ^thunderbird$, match:title ^.*Reminders?.*$, float on"
 
         "match:class ^\.scrcpy-wrapped$, match:title ^motorola edge 30 neo$, float on"
         "match:class ^\.scrcpy-wrapped$, match:title ^motorola edge 30 neo$, pin on"
