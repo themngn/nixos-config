@@ -36,6 +36,8 @@
     net-tools
     file
     texlive.combined.scheme-full
+    openssl
+    deezer-desktop
 
     # Terminal & Shell
     kitty
